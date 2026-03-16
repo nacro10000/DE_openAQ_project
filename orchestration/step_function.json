@@ -1,1 +1,27 @@
 
+{
+ "StartAt": "RunGlueETL",
+ "States": {
+  "RunGlueETL": {
+   "Type": "Task",
+   "Resource": "arn:aws:states:::glue:startJobRun.sync",
+   "Parameters": {
+    "JobName": "openaq-etl-job"
+   },
+   "Next": "RunCrawler"
+  },
+  "RunCrawler": {
+   "Type": "Task",
+   "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+   "Parameters": {
+    "Name": "openaq_processed_crawler"
+   },
+   "Next": "LoadDataMart"
+  },
+  "LoadDataMart": {
+   "Type": "Task",
+   "Resource": "arn:aws:states:::lambda:invoke",
+   "End": true
+  }
+ }
+}
