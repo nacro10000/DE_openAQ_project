@@ -1,5 +1,5 @@
 
-# OpenAQ Air Quality Data Engineering Pipeline
+# OpenAQ Air Quality Data Analytics Pipeline
 
 This project demonstrates a modern AWS-based data engineering pipeline that ingests,
 transforms, and analyzes global air quality measurements from the OpenAQ dataset.
